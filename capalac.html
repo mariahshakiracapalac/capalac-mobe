@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 15% auto;
+            padding: 20px;
+            background: #fff;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ff6f61;
+        }
+
+        /* Responsive iframe */
+        .modal-content iframe {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MARIAH MOVIE</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#popular">Popular Movies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Featured Movie</h2>
+        <div class="movie" data-trailer-url="https://www.youtube.com/embed/FEATURED_TRAILER_ID">
+            <img src="yellow cat.jpg" alt="Featured Movie">
+            <div class="movie-info">
+                <h3>Movie Title</h3>
+                <p>A brief description of the featured movie goes here.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="popular">
+        <h2>Popular Movies</h2>
+        <div class="movie-list">
+            <div class="movie" data-trailer-url="https://www.youtube.com/embed/ONWARD_TRAILER_ID">
+                <img src="onward.jpeg" alt="Movie 1">
+                <div class="movie-info">
+                    <h3>Movie Title 1</h3>
+                    <a href="#" class="watch-now">Watch Now</a>
+                </div>
+            </div>
+            <div class="movie" data-trailer-url="https://www.youtube.com/embed/DORA_TRAILER_ID">
+                <img src="dora.jpg" alt="Movie 2">
+                <div class="movie-info">
+                    <h3>Movie Title 2</h3>
+                    <a href="#" class="watch-now">Watch Now</a>
+                </div>
+            </div>
+            <div class="movie" data-trailer-url="https://www.youtube.com/embed/FROZEN_TRAILER_ID">
+                <img src="frozen.jpeg" alt="Movie 3">
+                <div class="movie-info">
+                    <h3>Movie Title 3</h3>
+                    <a href="#" class="watch-now">Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="#">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Movie Website</p>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="trailerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="trailerVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Modal
+        const modal = document.getElementById('trailerModal');
+        const closeModal = document.querySelector('.close');
+        const trailerVideo = document.getElementById('trailerVideo');
+
+        document.querySelectorAll('.movie').forEach(movie => {
+            movie.addEventListener('click', () => {
+                const trailerUrl = movie.getAttribute('data-trailer-url');
+                trailerVideo.src = trailerUrl;
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            trailerVideo.src = ''; // Stop video when closing modal
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                trailerVideo.src = ''; // Stop video when clicking outside modal
+            }
+        });
+    </script>
+</body>
+</html>
