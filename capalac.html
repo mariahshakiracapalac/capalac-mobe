@@ -16,7 +16,7 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(13, 13, 14, 0.8);
             justify-content: center;
             align-items: center;
             text-align: center;
@@ -26,7 +26,7 @@
             position: relative;
             margin: 15% auto;
             padding: 20px;
-            background: #fff;
+            background: #111111;
             width: 80%;
             max-width: 800px;
         }
@@ -37,24 +37,151 @@
             right: 25px;
             font-size: 35px;
             font-weight: bold;
-            color: #000;
+            color: #363434;
             cursor: pointer;
         }
 
         .close:hover {
-            color: #ff6f61;
+            color: #76a5da;
         }
 
-        /* Responsive iframe */
         .modal-content iframe {
             width: 100%;
             height: 400px;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffffff; /* Changed background color to white */
+            border-bottom: 1px solid #ccc; /* Added border for a clean separation */
+        }
+
+        header h1 {
+            margin: 0;
+            color: #333; /* Darker color for better readability */
+        }
+
+        header .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        header .search-bar input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            border: 1px solid #0c1b19;
+            border-radius: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* Featured Movie Section Styles */
+        .movie {
+            flex: 1 1 calc(33.333% - 40px);
+            box-sizing: border-box;
+        }
+
+        .movie img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .movie-info {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .watch-now {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #76a5da;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .watch-now:hover {
+            background-color: #5b8ac4;
+        }
+
+        /* Popular Movies Section Styles */
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Contact Section Styles */
+        section#contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section#contact label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        section#contact input,
+        section#contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        section#contact button {
+            padding: 10px 20px;
+            background-color: #76a5da;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        section#contact button:hover {
+            background-color: #5b8ac4;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4; /* Changed background color to a light grey */
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>MARIAH MOVIE</h1>
+        <h1>MY MOVIE</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search movies...">
+        </div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -69,36 +196,16 @@
         <div class="movie" data-trailer-url="https://www.youtube.com/embed/FEATURED_TRAILER_ID">
             <img src="yellow cat.jpg" alt="Featured Movie">
             <div class="movie-info">
-                <h3>Movie Title</h3>
-                <p>A brief description of the featured movie goes here.</p>
+                <h3>The Garfield Movie</h3>
+                <p>After an unexpected reunion with his long-lost father, a scruffy street cat, Garfield is forced to leave his perfectly pampered life in order to take part in a high-stakes heist and an incredible outdoor adventure begins!</p>
             </div>
         </div>
     </section>
 
     <section id="popular">
         <h2>Popular Movies</h2>
-        <div class="movie-list">
-            <div class="movie" data-trailer-url="https://www.youtube.com/embed/ONWARD_TRAILER_ID">
-                <img src="onward.jpeg" alt="Movie 1">
-                <div class="movie-info">
-                    <h3>Movie Title 1</h3>
-                    <a href="#" class="watch-now">Watch Now</a>
-                </div>
-            </div>
-            <div class="movie" data-trailer-url="https://www.youtube.com/embed/DORA_TRAILER_ID">
-                <img src="dora.jpg" alt="Movie 2">
-                <div class="movie-info">
-                    <h3>Movie Title 2</h3>
-                    <a href="#" class="watch-now">Watch Now</a>
-                </div>
-            </div>
-            <div class="movie" data-trailer-url="https://www.youtube.com/embed/FROZEN_TRAILER_ID">
-                <img src="frozen.jpeg" alt="Movie 3">
-                <div class="movie-info">
-                    <h3>Movie Title 3</h3>
-                    <a href="#" class="watch-now">Watch Now</a>
-                </div>
-            </div>
+        <div class="movie-list" id="popularMovies">
+            <!-- Popular movies will be dynamically inserted here -->
         </div>
     </section>
 
@@ -122,7 +229,6 @@
         <p>&copy; 2024 My Movie Website</p>
     </footer>
 
-    <!-- Modal Structure -->
     <div id="trailerModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -131,30 +237,106 @@
     </div>
 
     <script>
-        // JavaScript for Modal
+        const apiKey = '0c23693e183955778e3ce99a80bf14ec';
         const modal = document.getElementById('trailerModal');
         const closeModal = document.querySelector('.close');
         const trailerVideo = document.getElementById('trailerVideo');
+        const popularMoviesList = document.getElementById('popularMovies');
 
-        document.querySelectorAll('.movie').forEach(movie => {
-            movie.addEventListener('click', () => {
-                const trailerUrl = movie.getAttribute('data-trailer-url');
+        // Function to fetch movie details by ID
+        async function fetchMovieData(movieId) {
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
+            const data = await response.json();
+            return data;
+        }
+
+        // Function to fetch popular movies
+        async function fetchPopularMovies() {
+            const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
+            const data = await response.json();
+            return data.results;
+        }
+
+        // Function to display popular movies
+        async function displayPopularMovies() {
+            const movies = await fetchPopularMovies();
+            popularMoviesList.innerHTML = ''; // Clear existing movies
+
+            movies.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.className = 'movie';
+                movieElement.innerHTML = `
+                    <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                    <div class="movie-info">
+                        <h3>${movie.title}</h3>
+                        <a href="#" class="watch-now" data-trailer-url="https://vidsrc.xyz/embed/movie?tmdb=${movie.id}">Watch Now</a>
+                    </div>
+                `;
+                movieElement.setAttribute('data-movie-id', movie.id);
+                popularMoviesList.appendChild(movieElement);
+            });
+        }
+
+        // Event listener for movie click to show trailer
+        document.addEventListener('click', async (event) => {
+            if (event.target.classList.contains('watch-now')) {
+                const trailerUrl = event.target.getAttribute('data-trailer-url');
                 trailerVideo.src = trailerUrl;
                 modal.style.display = 'flex';
-            });
+                event.preventDefault(); // Prevent default anchor behavior
+            }
         });
 
+        // Close modal
         closeModal.addEventListener('click', () => {
             modal.style.display = 'none';
-            trailerVideo.src = ''; // Stop video when closing modal
+            trailerVideo.src = ''; // Stop video playback
         });
 
+        // Close modal when clicking outside
         window.addEventListener('click', (event) => {
             if (event.target === modal) {
                 modal.style.display = 'none';
-                trailerVideo.src = ''; // Stop video when clicking outside modal
+                trailerVideo.src = ''; // Stop video playback
             }
         });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', async function() {
+            const searchQuery = this.value.toLowerCase();
+            const movieList = document.querySelector('.movie-list');
+            movieList.innerHTML = ''; // Clear previous results
+
+            if (searchQuery !== '') {
+                const movies = await searchMovies(searchQuery);
+                movies.forEach(movie => {
+                    const movieElement = document.createElement('div');
+                    movieElement.className = 'movie';
+                    movieElement.innerHTML = `
+                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                        <div class="movie-info">
+                            <h3>${movie.title}</h3>
+                            <a href="#" class="watch-now" data-trailer-url="https://vidsrc.xyz/embed/movie?tmdb=${movie.id}">Watch Now</a>
+                        </div>
+                    `;
+                    movieElement.setAttribute('data-movie-id', movie.id);
+                    movieList.appendChild(movieElement);
+                });
+            } else {
+                // Display popular movies if search query is empty
+                displayPopularMovies();
+            }
+        });
+
+        // Function to search movies
+        async function searchMovies(query) {
+            const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`);
+            const data = await response.json();
+            return data.results;
+        }
+
+        // Initial display of popular movies
+        displayPopularMovies();
     </script>
 </body>
 </html>

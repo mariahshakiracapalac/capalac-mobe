@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -17,7 +17,7 @@ a:hover {
     color: #ff6f61;
 }
 
-/* Header */
+
 header {
     background-color: #444;
     padding: 20px;
@@ -28,7 +28,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 2.5em;
-    color: #ff6f61;
+    color: #e9e3e3;
 }
 
 nav ul {
@@ -46,7 +46,7 @@ nav ul li a {
     font-size: 1.2em;
 }
 
-/* Sections */
+
 section {
     padding: 50px 20px;
     margin: 20px auto;
@@ -60,10 +60,10 @@ section h2 {
     font-size: 2em;
     margin-bottom: 30px;
     text-align: center;
-    color: #ff6f61;
+    color: #eee9e8;
 }
 
-/* Featured Movie */
+
 .movie {
     display: flex;
     align-items: center;
@@ -96,7 +96,7 @@ section h2 {
     line-height: 1.6;
 }
 
-/* Popular Movies */
+
 .movie-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -135,7 +135,7 @@ section h2 {
 
 .movie-list .movie .watch-now {
     padding: 10px 20px;
-    background-color: #ff6f61;
+    background-color: #5491c2;
     color: white;
     border: none;
     border-radius: 8px;
@@ -149,10 +149,10 @@ section h2 {
 }
 
 .movie-list .movie .watch-now:hover {
-    background-color: #e55a50;
+    background-color: #f1ecec;
 }
 
-/* Contact Form */
+
 form {
     display: flex;
     flex-direction: column;
@@ -163,7 +163,7 @@ form {
 form label {
     margin-bottom: 10px;
     font-weight: bold;
-    color: #ff6f61;
+    color: #e4e1e1;
 }
 
 form input, form textarea {
@@ -179,12 +179,12 @@ form input, form textarea {
 }
 
 form input:focus, form textarea:focus {
-    border-color: #ff6f61;
+    border-color: #f1efef;
 }
 
 form button {
     padding: 15px;
-    background-color: #4b5ea2;
+    background-color: #59b8f8;
     color: white;
     border: none;
     border-radius: 8px;
@@ -197,7 +197,7 @@ form button:hover {
     background-color: #4c7de5;
 }
 
-/* Footer */
+
 footer {
     text-align: center;
     padding: 30px 20px;
